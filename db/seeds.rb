@@ -19,3 +19,10 @@ end
 	user.save
 end
 
+user_types = %w[admin user]
+user_types.each do |u|
+  user = User.create(email: "velthangavelcse+#{u}@gmail.com", name: "Thangavel-#{u}", password: "rails@123", password_confirmation: "rails@123", user_type: "#{u}")
+  user.build_address(address_line_one: "1st street", address_line_two: "Nehru nagar", city: "Erode", state: "Tamil Nadu", country: "India", pincode: "638002", mobile_number: "9930987678")
+  user.save
+end
+

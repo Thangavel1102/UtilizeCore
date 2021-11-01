@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 	validates :name, presence: true
 
 	has_one :address, :dependent => :destroy
@@ -6,6 +10,8 @@ class User < ApplicationRecord
 	has_many :received_parcels, foreign_key: :receiver_id, class_name: 'Parcel'
 
 	accepts_nested_attributes_for :address
+
+	enum user_type: [:admin, :user]
 
 
 	def name_with_address

@@ -1,9 +1,14 @@
 class ParcelsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_parcel, only: %i[ show edit update destroy ]
 
   # GET /parcels or /parcels.json
   def index
     @parcels = Parcel.includes(:service_type, :sender, :receiver)
+    respond_to do |format|
+      format.xlsx 
+      format.html 
+    end
   end
 
   # GET /parcels/1 or /parcels/1.json

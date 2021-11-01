@@ -12,11 +12,16 @@ class Parcel < ApplicationRecord
 	belongs_to :receiver, class_name: 'User'
 
 	after_create :send_notification
+	after_update :status_notification, if: :saved_change_to_status?
 
 	private
 
 	def send_notification
 		UserMailer.with(parcel: self).status_email.deliver_now
+	end
+
+	def status_notification
+		UserMailer.with(parcel: self).parcel_status_change.deliver_now
 	end
 
 end

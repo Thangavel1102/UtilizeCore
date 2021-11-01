@@ -12,13 +12,29 @@
 
   <body>
 
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/search">Search Orders</a></li>
-      <li><a href="/parcels">Parcels</a></li>
-      <li><a href="/users">Manage Users</a></li>
-      <li><a href="/service_types">Service Types</a></li>
-    </ul>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="row" style="float: right;">
+      <%= "#{current_user.name}- #{current_user.user_type}" if user_signed_in? %>
+    </div>
+    <br>
+    <div class="row" style="float: right;">
+      <%= button_to "logout", destroy_user_session_path, method: :delete if user_signed_in? %>
+    </div>
+    
+
+
+    <% if params[:controller] != "devise/sessions" %>
+      <ul>
+        <li><a href="/search">Search Orders</a></li>
+        <% if current_user.user_type == "admin" %>
+          <li><a href="/parcels">Parcels</a></li>
+          <li><a href="/users">Manage Users</a></li>
+          <li><a href="/service_types">Service Types</a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
 
     <%= yield %>
   </body>

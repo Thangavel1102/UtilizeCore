@@ -6,6 +6,11 @@
 
 <%= link_to 'New Parcel', new_parcel_path %>
 
+<% if current_user.user_type == "admin" %>
+  <%= link_to 'Download as Excel', parcels_path(format: :xlsx) %>
+<% end %>
+
+
 <br /><br />
 
 <table>
