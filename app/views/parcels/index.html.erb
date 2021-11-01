@@ -26,10 +26,10 @@
       <tr>
         <td><%= parcel.weight %></td>
         <td><%= parcel.status %></td>
-        <td><%= parcel.service_type.name %></td>
+        <td><%= parcel&.service_type&.name %></td>
         <td><%= parcel.payment_mode %></td>
-        <td><%= parcel.sender.name %></td>
-        <td><%= parcel.receiver.name %></td>
+        <td><%= parcel&.sender&.name %></td>
+        <td><%= parcel&.receiver&.name %></td>
         <td><%= link_to 'Show', parcel %></td>
         <td><%= link_to 'Edit', edit_parcel_path(parcel) %></td>
         <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

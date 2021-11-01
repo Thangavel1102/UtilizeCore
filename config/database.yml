@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: courier_service_development
-  username: postgres
-  password: postgres
+  database: parcel_service_development
+  username: thangavel
+  password: rails
   host: localhost
   port: 5432
   pool: 5

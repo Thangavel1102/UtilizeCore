@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'velthangavelcse@gmail.com'
 
   def status_email
     @parcel = params[:parcel]
